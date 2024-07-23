@@ -1,22 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home.jsx";
+import Agents from "./Components/Agents/Agents.jsx";
 
 const App = ()=> {
-const [data, setData] = useState([]);
-  useEffect(()=>{
-    // fetchData();
-  },[]);
-
-  const fetchData = async ()=>{
-      const res = await axios.get("https://valorant-api.com/v1/agents");
-      console.log(res.data.data);
-  }
 
   return (
     <>
       <div className="flex flex-col bg-gray-900 w-full h-full">
-          <Home />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route exact path="/agents" element={<Agents/>} />
+        </Routes>
       </div>
     </>
   )
