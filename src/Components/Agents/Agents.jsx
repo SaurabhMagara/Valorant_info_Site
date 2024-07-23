@@ -70,7 +70,7 @@ export default Agents;
 const AgentsCards = ({name, role, description, img}) => {
   return (
     <>
-      <div className='text-white p-2 rounded-md flex gap-2 justify-center items-center flex-wrap h-auto w-96 hover:bg-slate-600 bg-slate-800' >
+      <div className='text-white p-2 rounded-md flex gap-2 justify-center items-center flex-wrap h-auto w-96 hover:bg-slate-600 bg-slate-800 hover:cursor-pointer' >
         <div className='flex justify-center items-center overflow-hidden bg-gray-400 w-full rounded'>
           <img src={img} alt={name} className='h-52 w-9/12 bg-gray-200 rounded'/>
         </div>
