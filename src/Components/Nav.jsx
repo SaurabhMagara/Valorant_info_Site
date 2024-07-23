@@ -15,6 +15,7 @@ const Nav = () => {
             
           </div>
           <ul className='text-white gap-5 hidden md:flex'>
+          <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/'>Home</Link></li>
             <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/Agents'>Agents</Link></li>
             <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center">Weapons</li>
             <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center">Maps</li>
