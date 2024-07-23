@@ -6,7 +6,7 @@ const App = ()=> {
 
   return (
     <>
-      <div className="flex flex-col bg-gray-900 w-full h-full">
+      <div className="flex flex-col bg-gray-900 w-full h-full scroll-smooth">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route exact path="/agents" element={<Agents/>} />

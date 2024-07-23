@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <div className='w-full flex-col  mb-5 pb-3'>
         <Nav />
-        {/* Main starts here */}
+        
         <div className="flex flex-col justify-center items-center mt-5 md:mt-10 md:mb-24">
           <img src={image} alt="" className="md:h-[25rem] w-auto h-60" />
           <div className="text-white text-xl md:text-3xl w-11/12 flex flex-col justify-center items-center">
@@ -21,7 +21,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        {/* Main ends here */}
+        
         {/* Categories  */}
         <div className="flex flex-col justify-center items-center pt-5">
           <h1 className="text-red-500 font-semibold text-5xl mb-5">Categories</h1>
