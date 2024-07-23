@@ -67,6 +67,7 @@ const Nav = () => {
             'aria-labelledby': 'basic-button',
           }}
         >
+          <MenuItem onClick={handleClose}><Link to='/'>Home</Link></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/Agents'>Agents</Link></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Weapons'>Weapons</a></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Maps'>Maps</a></MenuItem>
