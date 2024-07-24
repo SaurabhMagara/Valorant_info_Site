@@ -80,7 +80,7 @@ const Weapons = () => {
         if (e.target.value == "") return setWeapons(data);
         setWeapons(() => {
             return data.filter((val) => {
-                return val?.displayName.toLowerCase() == e.target.value;
+                return val?.displayName.toLowerCase() == e.target.value .toLowerCase();
             });
         });
 
