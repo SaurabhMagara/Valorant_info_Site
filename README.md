@@ -5,12 +5,12 @@ Users can see infromation about Riot's popular game Valorant.
 
 Privew :- [Valorant_Site](https://valorant-info-site.vercel.app/)
 
-## Features
+## Features 
 
-    * Agents information 
-    * Weapons information
-    * Maps information
-    * In-game Currencies Information
-    * And other in-game Entities information
-    * Responsive design
-    * Filter and search feature in every page
+* Agents information 
+* Weapons information
+* Maps information
+* In-game Currencies Information
+* And other in-game Entities information
+* Responsive design
+* Filter and search feature in every page
