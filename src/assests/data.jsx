@@ -25,11 +25,6 @@ export const data = [
         des:"Data and assets of all in-game currencies"
     },
     {
-        name:"Titles",
-        id:"Titles",
-        des:"Data of all player titles"
-    },
-    {
         name:"Buddies",
         id:"Buddies",
         des:"Data and assets of all weapon buddies"
@@ -38,10 +33,5 @@ export const data = [
         name:"Gamemodes",
         id:"Gamemodes",
         des:"Data and assets of all gamemodes"
-    },
-    {
-        name:"Seasons",
-        id:"Seasons",
-        des:"Data of all seasons"
     }
 ];

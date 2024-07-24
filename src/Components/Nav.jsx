@@ -15,11 +15,11 @@ const Nav = () => {
             
           </div>
           <ul className='text-white gap-5 hidden md:flex'>
-          <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/'>Home</Link></li>
-            <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/Agents'>Agents</Link></li>
-            <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center">Weapons</li>
-            <li className="cursor-pointer hover:border-b-2 hover:border-red-500 flex justify-center items-center">Maps</li>
-            <li className="cursor-pointer hover:bg-red-500 rounded-full flex justify-center items-center"><LongMenu/></li>
+          <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/'>Home</Link></li>
+            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/Agents'>Agents</Link></li>
+            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/weapons'>Weapons</Link></li>
+            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center">Maps</li>
+            <li className="cursor-pointer subpixel-antialiased hover:bg-red-500 rounded-full flex justify-center items-center"><LongMenu/></li>
           </ul>
           <div className="md:hidden ">
             <MenuS />
@@ -67,16 +67,14 @@ const Nav = () => {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose}><Link to='/'>Home</Link></MenuItem>
-          <MenuItem onClick={handleClose}><Link to='/Agents'>Agents</Link></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Weapons'>Weapons</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Maps'>Maps</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Currencies</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Seasons</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Titles</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>GameModes</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Cards</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Buddies</a></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/'>Home</Link></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/agents'>Agents</Link></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/weapons'>Weapons</Link></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Maps'>Maps</a></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Currencies</a></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>GameModes</a></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Cards</a></MenuItem>
+          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Buddies</a></MenuItem>
         </Menu>
       </div>
     );
@@ -88,7 +86,7 @@ import { MoreVert } from "@mui/icons-material";
 
 function LongMenu() {
 
-   const options = ["Titles", "Cards", "Seasons" ,"Buddies", "GameModes", "Currencies"];
+   const options = ["Cards" ,"Buddies", "GameModes", "Currencies"];
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -122,7 +120,7 @@ function LongMenu() {
         onClose={handleClose}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Titles'} onClick={handleClose}>
+          <MenuItem key={option} selected={option === 'Titles'} onClick={handleClose} className="subpixel-antialiased">
             {option}
           </MenuItem>
         ))}
