@@ -132,8 +132,8 @@ const AgentsCards = ({ name, role, description, img }) => {
         </div>
         <div className='flex flex-col justify-center px-2 pb-2 w-96'>
           <h2 className='text-slate-950 px-3 font-bold text-lg subpixel-antialiased bg-slate-400 rounded-lg '>Name : {name}</h2>
-          <h3 className='text-black px-3 font-semibold bg-slate-400 subpixel-antialiased rounded-lg my-2 '><span className='font-bold'>Role : </span>{role}</h3>
-          <p className='text-justify  text-black px-3 bg-slate-400 rounded-lg font-semibold py-1'><span className=' font-bold subpixel-antialiased'>Description : </span>{description} </p>
+          <h3 className='text-black px-3 font-semibold bg-slate-500 subpixel-antialiased rounded-lg my-2 '><span className='font-bold'>Role : </span>{role}</h3>
+          <p className='text-justify  text-black px-3 bg-slate-500 rounded-lg font-semibold py-1'><span className=' font-bold subpixel-antialiased'>Description : </span>{description} </p>
         </div>
       </div>
     </>
