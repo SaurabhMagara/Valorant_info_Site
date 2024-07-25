@@ -7,82 +7,123 @@ const Weapons = () => {
     const [data, setData] = useState([]);
     const [weapons, setWeapons] = useState([]);
     const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
+        setLoading(true);
         const res = await axios.get("https://valorant-api.com/v1/weapons");
         setData(res.data.data);
         setWeapons(res.data.data);
+        setLoading(false);
     }
 
     const Rifles = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "Rifles";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const Pistols = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "Pistols";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const Shotguns = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "Shotguns";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const HeavyWeapons = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "Heavy Weapons";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const Melee = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
-                return val.shopData?.category == "Melee";
-            })
-        })
+                return val.displayName == "Melee";
+            });
+        });
+        setLoading(false);
+
     }
 
     const SMGs = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "SMGs";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const sniperRifles = () => {
+        setLoading(true);
+
         setWeapons(() => {
             return data.filter((val) => {
                 return val.shopData?.category == "Sniper Rifles";
-            })
-        })
+            });
+        });
+        setLoading(false);
+
     }
 
     const handleInput = (e) => {
+        setLoading(true);
+
         setInput(e.target.value);
 
-        if (e.target.value == "") return setWeapons(data);
+        if (e.target.value == ""){
+            setWeapons(data);
+            setLoading(false);
+            return;
+        };
+
         setWeapons(() => {
             return data.filter((val) => {
+                setLoading(true);
                 return val?.displayName.toLowerCase() == e.target.value .toLowerCase();
             });
         });
+        setLoading(false);
+
 
     }
 
@@ -114,15 +155,21 @@ const Weapons = () => {
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={Pistols}>Pistols</h2>
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={sniperRifles}>Sniper Rifles</h2>
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={SMGs}>SMGs</h2>
+                        <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={Melee}>Melee</h2>
                     </div>
-                    <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
+                    {loading ?
+                        <div>
+                            <p className='animate-pulse text-3xl text-white'>Loading ...</p>
+                        </div>
+                        :
+                        <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
                         {
                             weapons.map((val) => {
                                 return <WeaponsCards key={val.uuid} name={val.displayName} category={val.shopData?.category} img={val.displayIcon} fireRate={val.weaponStats?.fireRate} magSize={val.weaponStats?.magazineSize
                                 } />
                             })
                         }
-                    </div>
+                    </div>}
                 </div>
             </div>
         </>
@@ -134,9 +181,9 @@ export default Weapons;
 const WeaponsCards = ({ name, category, img, fireRate, magSize }) => {
     return (
         <>
-            <div className='text-white bg-slate-800  p-2 rounded-md flex gap-2 justify-center items-center flex-wrap h-auto w-96 hover:bg-gray-900 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-3 transition-all duration-500' >
+            <div className='text-white bg-slate-800  p-2 rounded-md flex gap-2 justify-center items-center flex-wrap h-auto w-[27rem] hover:bg-gray-900 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-3 transition-all duration-500' >
                 <div className='flex justify-center items-center overflow-hidden bg-gray-400 w-full rounded h-auto px-2 py-5'>
-                    <img src={img} alt={name} className='h-40 w-auto rounded' />
+                    <img src={img} alt={name} className='h-40 w-auto rounded hover:scale-110 duration-500 hover:brightness-110' />
                 </div>
                 <div className='flex flex-col justify-start w-full px-2 pb-2 '>
                     <h2 className='text-slate-950 subpixel-antialiased px-3 font-bold text-lg bg-slate-400 rounded-lg '>Name : {name}</h2>

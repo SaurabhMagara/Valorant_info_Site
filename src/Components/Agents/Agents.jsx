@@ -8,12 +8,15 @@ const Agents = () => {
   const [data, setData] = useState([]);
   const [agents, setAgents] = useState([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
+    setLoading(true);
     const res = await axios.get("https://valorant-api.com/v1/agents");
     const playableAgents = res.data.data;
 
@@ -28,48 +31,73 @@ const Agents = () => {
         return val.isPlayableCharacter == true;
       })
     });
+    setLoading(false);
+    setLoading(false);
   }
 
   const duel = () => {
+    setLoading(true);
+
     const duelists = data.filter((val) => {
       return val.role.displayName == "Duelist";
     });
 
     setAgents(duelists);
+    setLoading(false);
   }
 
   const sentinel = () => {
+    setLoading(true);
+
     const sentinels = data.filter((val) => {
       return val.role.displayName == "Sentinel";
     });
 
     setAgents(sentinels);
+    setLoading(false);
   }
 
   const initiator = () => {
+    setLoading(true);
+
     const Initiators = data.filter((val) => {
       return val.role.displayName == 'Initiator';
     });
 
     setAgents(Initiators);
+    setLoading(false);
   }
 
   const controller = () => {
+    setLoading(true);
+
     const controllers = data.filter((val) => {
       return val.role.displayName == "Controller";
     });
 
     setAgents(controllers);
+    setLoading(false);
   }
 
   const handleChange = (e) => {
+    setLoading(true);
+
     setInput(e.target.value);
-    if (e.target.value == "") return setAgents(data);
+    
+    if (e.target.value == "") {
+      setAgents(data);
+      setLoading(false);
+      return;
+    }
+
     setAgents(() => {
       return data.filter((val) => {
-        return val.displayName.toLowerCase() == e.target.value.toLowerCase();
+        setLoading(true);
+        return val.displayName.toLowerCase() == e.target.value.toLowerCase();  
       });
     });
+
+    setLoading(false);
   }
 
   return (
@@ -82,7 +110,7 @@ const Agents = () => {
             <input
               type="text"
               placeholder=' Search'
-              className='rounded-3xl h-10 w-full text-gray-100 px-3 bg-slate-700 caret-red-600 font-sans '
+              className='rounded-3xl h-10 w-full text-gray-100 px-3 bg-slate-700 caret-red-600 font-sans'
               onChange={handleChange}
               value={input}
             />
@@ -98,14 +126,19 @@ const Agents = () => {
             <h2 className='px-3 border-[1px] border-white rounded-3xl subpixel-antialiased hover:cursor-pointer hover:bg-red-500' onClick={sentinel}>Sentinels</h2>
             <h2 className='px-3 border-[1px] border-white rounded-3xl subpixel-antialiased v hover:cursor-pointer hover:bg-red-500' onClick={initiator} >Initiators</h2>
           </div>
-          <div className='flex justify-evenly items-center gap-2 flex-wrap '>
-            {
-              agents.map((val) => {
-                return <AgentsCards key={val.uuid} name={val.displayName} description={val.description} role={val.role.displayName} img={val.fullPortrait
-                } />
-              })
-            }
-          </div>
+          {loading ?
+            <div>
+              <p className='animate-pulse text-3xl text-white'>Loading ...</p>
+            </div>
+            :
+            <div className='flex justify-evenly items-center gap-2 flex-wrap '>
+              {
+                agents.map((val) => {
+                  return <AgentsCards key={val.uuid} name={val.displayName} description={val.description} role={val.role.displayName} img={val.fullPortrait
+                  } />
+                })
+              }
+            </div>}
         </div>
       </div>
     </>
@@ -119,7 +152,7 @@ const AgentsCards = ({ name, role, description, img }) => {
     <>
       <div className='text-white p-2 rounded-lg flex gap-2 justify-center items-center flex-wrap h-auto w-96 hover:bg-gray-900 bg-slate-800 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-2 transition-all duration-500' >
         <div className='flex justify-center items-center overflow-hidden bg-gray-400 w-full rounded-md'>
-          <img src={img} alt={name} className='h-52 w-9/12 rounded' />
+          <img src={img} alt={name} className='h-[19rem]  rounded hover:scale-125 duration-500 hover:brightness-110' />
         </div>
         <div className='flex flex-col justify-center px-2 pb-2 '>
           <h2 className='text-slate-950 px-3 font-bold text-lg subpixel-antialiased bg-slate-400 rounded-lg '>Name : {name}</h2>

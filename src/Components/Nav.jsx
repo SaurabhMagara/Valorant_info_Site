@@ -14,12 +14,20 @@ const Nav = () => {
             </Link>
             
           </div>
-          <ul className='text-white gap-5 hidden md:flex'>
-          <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/'>Home</Link></li>
-            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/Agents'>Agents</Link></li>
-            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center"><Link to='/weapons'>Weapons</Link></li>
-            <li className="cursor-pointer subpixel-antialiased hover:border-b-2 hover:border-red-500 flex justify-center items-center">Maps</li>
-            <li className="cursor-pointer subpixel-antialiased hover:bg-red-500 rounded-full flex justify-center items-center"><LongMenu/></li>
+          <ul className='text-white subpixel-antialiased gap-5 hidden md:flex md:justify-center md:items-center'>
+          <Link to='/'>
+          <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Home</li>
+          </Link>
+          <Link to='/Agents'>
+            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Agents</li>
+            </Link>
+            <Link to='/weapons'>
+            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Weapons</li>
+            </Link>
+            <Link to='/maps'>
+            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Maps</li>
+            </Link>
+            <li className="cursor-pointer hover:bg-red-500 rounded-full flex justify-center items-center"><LongMenu/></li>
           </ul>
           <div className="md:hidden ">
             <MenuS />
@@ -67,14 +75,14 @@ const Nav = () => {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/'>Home</Link></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/agents'>Agents</Link></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><Link to='/weapons'>Weapons</Link></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Maps'>Maps</a></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Currencies</a></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>GameModes</a></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Cards</a></MenuItem>
-          <MenuItem onClick={handleClose} className="subpixel-antialiased"><a href='#Currencies'>Buddies</a></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/'>Home</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/agents'>Agents</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/weapons'>Weapons</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/maps'>Maps</Link></MenuItem>
+          <MenuItem onClick={handleClose}><a href='#Currencies'>Currencies</a></MenuItem>
+          <MenuItem onClick={handleClose}><a href='#Currencies'>GameModes</a></MenuItem>
+          <MenuItem onClick={handleClose}><a href='#Currencies'>Cards</a></MenuItem>
+          <MenuItem onClick={handleClose}><a href='#Currencies'>Buddies</a></MenuItem>
         </Menu>
       </div>
     );
