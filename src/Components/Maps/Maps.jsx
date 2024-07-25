@@ -13,14 +13,19 @@ const Maps = () => {
         fetchData();
     }, []);
 
+    //get data from api url
     const fetchData = async () => {
         setLoading(true);
         const res = await axios.get("https://valorant-api.com/v1/maps");
+        //sets data to main array
         setData(res.data.data);
+
+        //sets data to used array
         setMaps(res.data.data);
         setLoading(false);
     }
 
+    //Updates field from input tag value
     const handleChange = (e) => {
         setLoading(true);
         setInput(e.target.value);
@@ -31,12 +36,9 @@ const Maps = () => {
             return;
         };
 
-        setMaps(() => {
-            return data.filter((val) => {
-                return val?.displayName.toLowerCase() == e.target.value.toLowerCase();
-            })
-        });
-
+        //filter out values that containes input value
+        const filteredMaps = data.filter(val => val?.displayName.toLowerCase().includes(e.target.value.toLowerCase()));
+        setMaps(filteredMaps);
         setLoading(false);
     }
 
@@ -64,7 +66,7 @@ const Maps = () => {
                             <div>
                                 <p className='animate-pulse text-3xl text-white'>Loading ...</p>
                             </div>
-                            : <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
+                            : <div className='flex justify-evenly items-center gap-2 flex-wrap w-11/12 md:w-full '>
                                 {maps.length > 0 ?
                                     maps.map((val) => {
                                         return <MapsCards key={val?.uuid} name={val?.displayName} img={val?.splash} tacticalDes={val?.tacticalDescription === null ? "Nil" : val?.tacticalDescription} callouts={val?.callouts?.length} coOrdinates={val?.coordinates === null ? "Nil" : val?.coordinates} />
@@ -93,9 +95,11 @@ const MapsCards = ({ name, coOrdinates, img, tacticalDes, callouts }) => {
                 </div>
                 <div className='flex flex-col justify-center px-2 pb-2 w-full '>
                     <h2 className='text-slate-950 px-3 font-bold text-lg subpixel-antialiased bg-slate-400 rounded-lg '>Name : {name} </h2>
-                    <h3 className='text-black px-3 font-semibold bg-slate-500 subpixel-antialiased rounded-lg my-2 '>Co-ordinates : {coOrdinates}</h3>
-                    <h3 className='text-black px-3 font-semibold bg-slate-500 subpixel-antialiased rounded-lg '>Tactical Descriptions : {tacticalDes} </h3>
-                    <h3 className='text-black px-3 font-semibold bg-slate-500 subpixel-antialiased rounded-lg my-2'>Total callouts : {callouts} </h3>
+                    <div className="bg-slate-500 rounded-lg font-semibold subpixel-antialiased mt-2 text-black">
+                        <h3 className='px-3 my-2 font-semibold '><span className="font-bold">Coordinates : </span>{coOrdinates}</h3>
+                        <h3 className=' px-3 font-semibold '><span className="font-bold">Tactivcal Description : </span>{tacticalDes} </h3>
+                        <h3 className=' px-3 my-2 font-semibold'><span className="font-bold">Total Callouts : </span>{callouts} </h3>
+                    </div>
                 </div>
             </div>
         </>

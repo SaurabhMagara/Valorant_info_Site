@@ -23,106 +23,68 @@ const Weapons = () => {
 
     const Rifles = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "Rifles";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "Rifles");
+        setWeapons(filteredWeapons);
         setLoading(false);
     }
 
     const Pistols = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "Pistols";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "Pistols");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
     const Shotguns = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "Shotguns";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "Shotguns");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
     const HeavyWeapons = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "Heavy Weapons";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "Heavy Weapons");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
     const Melee = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.displayName == "Melee";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.displayName == "Melee");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
     const SMGs = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "SMGs";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "SMGs");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
     const sniperRifles = () => {
         setLoading(true);
-
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val.shopData?.category == "Sniper Rifles";
-            });
-        });
+        const filteredWeapons = data.filter(val => val.shopData?.category == "Sniper Rifles");
+        setWeapons(filteredWeapons);
         setLoading(false);
-
     }
 
+    //Updates field from input tag value
     const handleInput = (e) => {
         setLoading(true);
-
         setInput(e.target.value);
 
         if (e.target.value == "") {
             setWeapons(data);
             setLoading(false);
             return;
-        };
+        }
 
-        setWeapons(() => {
-            return data.filter((val) => {
-                return val?.displayName.toLowerCase() == e.target.value.toLowerCase();
-            });
-        });
+        //filter out values that containes input value
+        const filteredWeapons = data.filter(val => val?.displayName.toLowerCase().includes(e.target.value.toLowerCase()));
+        setWeapons(filteredWeapons);
         setLoading(false);
-
-
     }
 
     return (
@@ -161,7 +123,7 @@ const Weapons = () => {
                             <p className='animate-pulse text-3xl text-white'>Loading ...</p>
                         </div>
                         :
-                        <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
+                        <div className='flex justify-evenly items-center gap-2 flex-wrap w-11/12 md:w-full '>
                             {weapons.length > 0 ?
                                 weapons.map((val) => {
                                     return <WeaponsCards key={val.uuid} name={val.displayName} category={val.shopData?.category} img={val.displayIcon} fireRate={val.weaponStats?.fireRate} magSize={val.weaponStats?.magazineSize
@@ -190,9 +152,11 @@ const WeaponsCards = ({ name, category, img, fireRate, magSize }) => {
                 </div>
                 <div className='flex flex-col justify-start w-full px-2 pb-2 '>
                     <h2 className='text-slate-950 subpixel-antialiased px-3 font-bold text-lg bg-slate-400 rounded-lg '>Name : {name}</h2>
-                    <h3 className='text-black subpixel-antialiased px-3 font-semibold bg-slate-500 rounded-lg my-2 '>Type : {category}</h3>
-                    <h3 className='text-black subpixel-antialiased px-3 font-semibold bg-slate-500 rounded-lg  '>Fire Rate : {fireRate}</h3>
-                    <h3 className='text-black subpixel-antialiased px-3 font-semibold bg-slate-500 rounded-lg my-2 '> Magazine Size : {magSize}</h3>
+                    <div className="bg-slate-500 rounded-lg font-semibold subpixel-antialiased mt-2 text-black">
+                        <h3 className=' px-3 font-semibold rounded-lg my-2 '><span className="font-bold">Type : </span>{category}</h3>
+                        <h3 className=' px-3 font-semibold rounded-lg  '><span className="font-bold">Fire Rate : </span>{fireRate}</h3>
+                        <h3 className=' px-3 font-semibold rounded-lg my-2 '><span className="font-bold">Magazine Size : </span>{magSize}</h3>
+                    </div>
                 </div>
             </div>
         </>
