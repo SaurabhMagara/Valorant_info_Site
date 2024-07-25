@@ -25,7 +25,7 @@ const Maps = () => {
         setLoading(true);
         setInput(e.target.value);
 
-        if (e.target.value == ""){
+        if (e.target.value == "") {
             setMaps(data);
             setLoading(false);
             return;
@@ -49,7 +49,7 @@ const Maps = () => {
                     <div className=' w-4/6 flex justify-center items-center m-2 md:w-3/6'>
                         <input
                             type="text"
-                            placeholder=' Search'
+                            placeholder=' Search by name'
                             className='rounded-3xl h-10 w-full text-gray-100 px-3 bg-slate-700 caret-red-600'
                             onChange={handleChange}
                             value={input}
@@ -60,17 +60,21 @@ const Maps = () => {
                     </div>
 
                     {
-                    loading ?
-                        <div>
-                            <p className='animate-pulse text-3xl text-white'>Loading ...</p>
-                        </div>
-                        : <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
-                            {
-                                maps.map((val) => {
-                                    return <MapsCards key={val?.uuid} name={val?.displayName} img={val?.splash} tacticalDes={val?.tacticalDescription === null ? "Nil" : val?.tacticalDescription} callouts={val?.callouts?.length} coOrdinates={val?.coordinates === null ? "Nil" : val?.coordinates} />
-                                })
-                            }
-                        </div>
+                        loading ?
+                            <div>
+                                <p className='animate-pulse text-3xl text-white'>Loading ...</p>
+                            </div>
+                            : <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
+                                {maps.length > 0 ?
+                                    maps.map((val) => {
+                                        return <MapsCards key={val?.uuid} name={val?.displayName} img={val?.splash} tacticalDes={val?.tacticalDescription === null ? "Nil" : val?.tacticalDescription} callouts={val?.callouts?.length} coOrdinates={val?.coordinates === null ? "Nil" : val?.coordinates} />
+                                    })
+                                    :
+                                    <div className='text-white text-3xl p-10 rounded'>
+                                        No maps found!
+                                    </div>
+                                }
+                            </div>
                     }
                 </div>
             </div>

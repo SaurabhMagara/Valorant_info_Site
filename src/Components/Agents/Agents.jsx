@@ -83,7 +83,7 @@ const Agents = () => {
     setLoading(true);
 
     setInput(e.target.value);
-    
+
     if (e.target.value == "") {
       setAgents(data);
       setLoading(false);
@@ -91,11 +91,9 @@ const Agents = () => {
     }
 
     setAgents(() => {
-      return (data.filter((val) => {
-        return val.displayName.toLowerCase() == e.target.value.toLowerCase();  
-      })
-    );
-      
+      return data.filter((val) => {
+        return val.displayName.toLowerCase() == e.target.value.toLowerCase();
+      });
     });
 
     setLoading(false);
@@ -110,7 +108,7 @@ const Agents = () => {
           <div className=' w-4/6 flex justify-center items-center m-2 md:w-3/6'>
             <input
               type="text"
-              placeholder=' Search'
+              placeholder=' Search by name'
               className='rounded-3xl h-10 w-full text-gray-100 px-3 bg-slate-700 caret-red-600 font-sans'
               onChange={handleChange}
               value={input}
@@ -121,6 +119,9 @@ const Agents = () => {
             <div className=" border-b-2 border-red-500 w-full mt-2"></div>
           </div>
           <div className='text-white flex  flex-wrap justify-center items-center gap-2 my-5'>
+            <h2 className='subpixel-antialiased text-lg font-semibold'>
+              Filter by role :
+            </h2>
             <h2 className='px-3 border-[1px] border-white rounded-3xl subpixel-antialiased hover:cursor-pointer hover:bg-red-500 ' onClick={fetchData}>All</h2>
             <h2 className='px-3 border-[1px] border-white rounded-3xl subpixel-antialiased hover:cursor-pointer hover:bg-red-500 ' onClick={duel}>Duelists</h2>
             <h2 className='px-3 border-[1px] border-white rounded-3xl subpixel-antialiased hover:cursor-pointer hover:bg-red-500' onClick={controller}>Controllers</h2>
@@ -133,11 +134,15 @@ const Agents = () => {
             </div>
             :
             <div className='flex justify-evenly items-center gap-2 flex-wrap '>
-              {
+              {agents.length > 0 ?
                 agents.map((val) => {
                   return <AgentsCards key={val.uuid} name={val.displayName} description={val.description} role={val.role.displayName} img={val.fullPortrait
                   } />
                 })
+                :
+                <div className='text-white text-3xl p-10 rounded'>
+                  No agents found!
+                </div>
               }
             </div>}
         </div>

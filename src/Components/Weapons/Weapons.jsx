@@ -30,7 +30,6 @@ const Weapons = () => {
             });
         });
         setLoading(false);
-
     }
 
     const Pistols = () => {
@@ -110,7 +109,7 @@ const Weapons = () => {
 
         setInput(e.target.value);
 
-        if (e.target.value == ""){
+        if (e.target.value == "") {
             setWeapons(data);
             setLoading(false);
             return;
@@ -118,7 +117,7 @@ const Weapons = () => {
 
         setWeapons(() => {
             return data.filter((val) => {
-                return val?.displayName.toLowerCase() == e.target.value .toLowerCase();
+                return val?.displayName.toLowerCase() == e.target.value.toLowerCase();
             });
         });
         setLoading(false);
@@ -135,18 +134,19 @@ const Weapons = () => {
                     <div className=' w-4/6 flex justify-center items-center m-2 md:w-3/6'>
                         <input
                             type="text"
-                            placeholder=' Search'
+                            placeholder=' Search by name'
                             onChange={handleInput}
                             value={input}
                             className='rounded-3xl h-10 w-full text-gray-100 px-3 bg-slate-700 caret-red-600'
                         />
-
                     </div>
-
                     <div className="flex justify-center items-center w-8/12 mt-2">
                         <div className=" border-b-2 border-red-500 w-full my-3"></div>
                     </div>
                     <div className='text-white flex  flex-wrap justify-center items-center gap-2 my-5'>
+                        <h2 className='subpixel-antialiased text-lg font-semibold'>
+                            Filter by category :
+                        </h2>
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={fetchData}>All</h2>
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={Rifles}>Rifles</h2>
                         <h2 className='px-3 border-[1px] subpixel-antialiased border-white rounded-3xl hover:cursor-pointer hover:bg-red-500' onClick={HeavyWeapons}>Heavy Weapons</h2>
@@ -162,13 +162,17 @@ const Weapons = () => {
                         </div>
                         :
                         <div className='flex justify-evenly items-center gap-2 flex-wrap w-full '>
-                        {
-                            weapons.map((val) => {
-                                return <WeaponsCards key={val.uuid} name={val.displayName} category={val.shopData?.category} img={val.displayIcon} fireRate={val.weaponStats?.fireRate} magSize={val.weaponStats?.magazineSize
-                                } />
-                            })
-                        }
-                    </div>}
+                            {weapons.length > 0 ?
+                                weapons.map((val) => {
+                                    return <WeaponsCards key={val.uuid} name={val.displayName} category={val.shopData?.category} img={val.displayIcon} fireRate={val.weaponStats?.fireRate} magSize={val.weaponStats?.magazineSize
+                                    } />
+                                })
+                                :
+                                <div className='text-white text-3xl p-10 rounded'>
+                                    No weapons found!
+                                </div>
+                            }
+                        </div>}
                 </div>
             </div>
         </>

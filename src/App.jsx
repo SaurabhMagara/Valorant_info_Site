@@ -5,17 +5,14 @@ import Weapons from "./Components/Weapons/Weapons.jsx";
 import Maps from "./Components/Maps/Maps.jsx";
 
 const App = () => {
-
   return (
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route exact path="/agents" element={<Agents />} />
-        <Route exact path="/weapons" element={<Weapons />} />
-        <Route exact path="/maps" element={<Maps/>}/>
-      </Routes>
-
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route exact path="/agents" element={<Agents />} />
+      <Route exact path="/weapons" element={<Weapons />} />
+      <Route exact path="/maps" element={<Maps />} />
+    </Routes>
   )
 }
 
-export default App
+export default App;
