@@ -33,7 +33,6 @@ const Maps = () => {
 
         setMaps(() => {
             return data.filter((val) => {
-                setLoading(true);
                 return val?.displayName.toLowerCase() == e.target.value.toLowerCase();
             })
         });

@@ -91,10 +91,11 @@ const Agents = () => {
     }
 
     setAgents(() => {
-      return data.filter((val) => {
-        setLoading(true);
+      return (data.filter((val) => {
         return val.displayName.toLowerCase() == e.target.value.toLowerCase();  
-      });
+      })
+    );
+      
     });
 
     setLoading(false);
