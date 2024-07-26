@@ -27,3 +27,4 @@ dist-ssr
 .eslintrc.cjs
 postcss.config.js
 tailwind.config.js
+sample.js

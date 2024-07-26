@@ -19,7 +19,7 @@ const Agents = () => {
     setLoading(true);
     const res = await axios.get("https://valorant-api.com/v1/agents");
     const playableAgents = res.data.data;
-    const filteredAgents = playableAgents.filter((val)=>val?.isPlayableCharacter==true);
+    const filteredAgents = playableAgents.filter(val=>val?.isPlayableCharacter==true);
 
     setData(filteredAgents);
     setAgents(filteredAgents);
@@ -28,7 +28,7 @@ const Agents = () => {
 
   const duel = () => {
     setLoading(true);
-    const duelists = data.filter((val) => val.role.displayName == "Duelist");
+    const duelists = data.filter(val => val.role.displayName == "Duelist");
     setAgents(duelists);
     setLoading(false);
   }
@@ -49,7 +49,7 @@ const Agents = () => {
 
   const controller = () => {
     setLoading(true);
-    const controllers = data.filter((val) => val.role.displayName == "Controller");
+    const controllers = data.filter(val => val.role.displayName == "Controller");
     setAgents(controllers);
     setLoading(false);
   }
