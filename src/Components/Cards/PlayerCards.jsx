@@ -31,17 +31,6 @@ const PlayerCards = () => {
     setData(filteredCards);
   }, [cards, data, setCards, page]);
 
-  const handleInput = useCallback((e)=>{
-    setLoading(true);
-
-    setInput(e.target.value);
-    const filteredCards = data.filter(val=>val.displayName.toLowerCase().includes(e.target.value.toLowerCase()));
-    setCards(filteredCards);
-    console.log(filteredCards);
-
-    setLoading(false);
-  },[cards, data, input])
-
   return (
     <>
       <div
