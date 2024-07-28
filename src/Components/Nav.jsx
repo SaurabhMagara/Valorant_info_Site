@@ -81,7 +81,7 @@ const Nav = () => {
           <MenuItem onClick={handleClose}><Link to='/maps'>Maps</Link></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Currencies'>Currencies</a></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Currencies'>GameModes</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Cards</a></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/cards'>Cards</Link></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Currencies'>Buddies</a></MenuItem>
         </Menu>
       </div>
@@ -91,10 +91,12 @@ const Nav = () => {
   // more button menu
 import IconButton from '@mui/material/IconButton';
 import { MoreVert } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function LongMenu() {
+  const navigate = useNavigate();
 
-   const options = ["Cards" ,"Buddies", "GameModes", "Currencies"];
+  const options = ["Cards" ,"Buddies", "GameModes", "Currencies"];
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -102,7 +104,6 @@ function LongMenu() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-
     setAnchorEl(null);
   };
 
@@ -129,7 +130,7 @@ function LongMenu() {
       >
         {options.map((option) => (
           <MenuItem key={option} selected={option === 'Titles'} onClick={handleClose} className="subpixel-antialiased">
-            {option}
+           <Link to={`/${option.toLowerCase()}`}> {option}</Link> 
           </MenuItem>
         ))}
       </Menu>

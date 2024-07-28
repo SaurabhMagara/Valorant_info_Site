@@ -146,7 +146,7 @@ export default Weapons;
 const WeaponsCards = ({ name, category, img, fireRate, magSize }) => {
     return (
         <>
-            <div className='text-white bg-slate-800  p-2 rounded-md flex gap-2 justify-center items-center flex-wrap h-auto w-[26rem] hover:bg-gray-900 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-3 transition-all duration-500' >
+            <div className='text-white bg-slate-800  p-2 rounded-md flex flex-col gap-2 justify-center items-center flex-wrap h-auto w-[26rem] hover:bg-gray-900 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-3 transition-all duration-500' >
                 <div className='flex justify-center items-center overflow-hidden bg-gray-400 w-full rounded h-auto px-2 py-5'>
                     <img src={img} alt={name} className='h-40 w-auto rounded hover:scale-110 duration-500 hover:brightness-110' />
                 </div>
