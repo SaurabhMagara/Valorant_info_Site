@@ -74,7 +74,7 @@ const Agents = () => {
       <div className="flex flex-col bg-gray-900 w-full h-full scroll-smooth">
         <Nav />
         <div className=' flex  flex-col justify-center items-center my-5 h-full w-full'>
-          <h1 className='text-red-500 font-sans text-2xl font-semibold subpixel-antialiased md:text-5xl mb-4'>Agents</h1>
+          <h1 className='text-red-500 font-sans text-4xl font-semibold subpixel-antialiased md:text-5xl mb-4'>Agents</h1>
           <div className=' w-4/6 flex justify-center items-center m-2 md:w-3/6'>
             <input
               type="text"

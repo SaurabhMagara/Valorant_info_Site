@@ -20,11 +20,6 @@ export const data = [
         des: "Data and assets of all player cards"
     },
     {
-        name:"Currencies",
-        id:"Currencies",
-        des:"Data and assets of all in-game currencies"
-    },
-    {
         name:"Buddies",
         id:"Buddies",
         des:"Data and assets of all weapon buddies"

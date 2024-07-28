@@ -5,6 +5,7 @@ import axios from "axios";
 const Buddies = () => {
   const [data, setData] = useState([]);
   const [buddeis, setBuddies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const topRef = useRef(null);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,20 +16,21 @@ const Buddies = () => {
   const pageNos = [...Array(totalPages + 1).keys()].slice(1);
 
   useEffect(() => {
-
+    setLoading(true);
     fetchData();
     topRef.current.scrollIntoView();
-    console.log(topRef);
-
+    setLoading(false);
   }, [setCurrentPage, currentPage]);
 
   const fetchData = useCallback(async () => {
+    setLoading(true);
 
     const res = await axios.get("https://valorant-api.com/v1/buddies");
     const fetchedBuddies = res.data.data;
 
     setData(fetchedBuddies);
     setBuddies(fetchedBuddies.slice(startIdx, lastIdx));
+    setLoading(false);
 
   }, [buddeis, pageNos, setCurrentPage, data, recordsPerPage, totalPages]);
 
@@ -40,7 +42,7 @@ const Buddies = () => {
       >
         <Nav />
         <div className=" flex  flex-col justify-center items-center my-5 h-full w-full">
-          <h1 className="text-red-500 text-3xl font-sans font-semibold md:text-5xl mb-4 shadow subpixel-antialiased">
+          <h1 className="text-red-500 text-4xl font-sans font-semibold md:text-5xl mb-4 shadow subpixel-antialiased">
             Weapon Buddies
           </h1>
 
@@ -49,85 +51,98 @@ const Buddies = () => {
             <div className=" border-b-2 border-red-500 w-full my-2"></div>
           </div>
 
-          {/* Page no box */}
+          
 
-          <div className=" md:border flex justify-center items-center  text-white w-11/12 flex-wrap mb-5 md:w-auto">
-            <span
-              className={`my-1 md:my-0 py-1 px-2 bg-red-500 hover:cursor-pointer hover:scale-90 ${
-                currentPage == 1 ? "hidden" : ""
-              }`}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              Prev
-            </span>
-            {pageNos.map((v, i) => {
-              return (
+          {loading ? (
+            <div>
+              <p className="animate-pulse text-3xl text-white">Loading ...</p>
+            </div>
+          ) : (
+            <>
+            {/* Page no box */}
+              <div className=" md:border flex justify-center items-center  text-white w-11/12 flex-wrap mb-5 md:w-auto">
                 <span
-                  key={i}
-                  className={`${
-                    currentPage == v ? "bg-red-500 text-gray-300 border" : ""
-                  } py-1 px-2 bg-gray-800 hover:cursor-pointer hover:bg-red-500 hover:scale-90 `}
-                  onClick={() => setCurrentPage(v)}
+                  className={`my-1 md:my-0 py-1 px-2 bg-red-500 hover:cursor-pointer hover:scale-90 ${
+                    currentPage == 1 ? "hidden" : ""
+                  }`}
+                  onClick={() => setCurrentPage((prev) => prev - 1)}
                 >
-                  {i + 1}
+                  Prev
                 </span>
-              );
-            })}
-            <span
-              className={`my-1 md:my-0 py-1 px-2 bg-green-500 hover:cursor-pointer hover:scale-90 ${
-                currentPage == totalPages ? "hidden" : ""
-              }`}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Next
-            </span>
-          </div>
-
-          <div className="flex justify-evenly items-center gap-2 flex-wrap w-11/12">
-            {buddeis.map((val) => {
-              return (
-                <BuddiesCard
-                  key={val?.uuid}
-                  name={val?.displayName}
-                  img={val?.displayIcon}
-                />
-              );
-            })}
-          </div>
-
-          {/* Page no box */}
-
-          <div className=" md:border flex justify-center items-center  text-white w-11/12 flex-wrap mb-5 md:w-auto mt-2">
-            <span
-              className={`my-1 md:my-0 py-1 px-2 bg-red-500 hover:cursor-pointer hover:scale-90 ${
-                currentPage == 1 ? "hidden" : ""
-              }`}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              Prev
-            </span>
-            {pageNos.map((v, i) => {
-              return (
+                {pageNos.map((v, i) => {
+                  return (
+                    <span
+                      key={i}
+                      className={`${
+                        currentPage == v
+                          ? "bg-red-500 text-gray-300 border"
+                          : ""
+                      } py-1 px-2 bg-gray-800 hover:cursor-pointer hover:bg-red-500 hover:scale-90 `}
+                      onClick={() => setCurrentPage(v)}
+                    >
+                      {i + 1}
+                    </span>
+                  );
+                })}
                 <span
-                  key={i}
-                  className={`${
-                    currentPage == v ? "bg-red-500 text-gray-300 border" : ""
-                  } py-1 px-2 bg-gray-800 hover:cursor-pointer hover:bg-red-500 hover:scale-90 `}
-                  onClick={() => setCurrentPage(v)}
+                  className={`my-1 md:my-0 py-1 px-2 bg-green-500 hover:cursor-pointer hover:scale-90 ${
+                    currentPage == totalPages ? "hidden" : ""
+                  }`}
+                  onClick={() => setCurrentPage((prev) => prev + 1)}
                 >
-                  {i + 1}
+                  Next
                 </span>
-              );
-            })}
-            <span
-              className={`my-1 md:my-0 py-1 px-2 bg-green-500 hover:cursor-pointer hover:scale-90 ${
-                currentPage == totalPages ? "hidden" : ""
-              }`}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Next
-            </span>
-          </div>
+              </div>
+
+              <div className="flex justify-evenly items-center gap-2 flex-wrap w-11/12">
+                {buddeis.map((val) => {
+                  return (
+                    <BuddiesCard
+                      key={val?.uuid}
+                      name={val?.displayName}
+                      img={val?.displayIcon}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Page no box */}
+
+              <div className=" md:border flex justify-center items-center  text-white w-11/12 flex-wrap mb-5 md:w-auto mt-2">
+                <span
+                  className={`my-1 md:my-0 py-1 px-2 bg-red-500 hover:cursor-pointer hover:scale-90 ${
+                    currentPage == 1 ? "hidden" : ""
+                  }`}
+                  onClick={() => setCurrentPage((prev) => prev - 1)}
+                >
+                  Prev
+                </span>
+                {pageNos.map((v, i) => {
+                  return (
+                    <span
+                      key={i}
+                      className={`${
+                        currentPage == v
+                          ? "bg-red-500 text-gray-300 border"
+                          : ""
+                      } py-1 px-2 bg-gray-800 hover:cursor-pointer hover:bg-red-500 hover:scale-90 `}
+                      onClick={() => setCurrentPage(v)}
+                    >
+                      {i + 1}
+                    </span>
+                  );
+                })}
+                <span
+                  className={`my-1 md:my-0 py-1 px-2 bg-green-500 hover:cursor-pointer hover:scale-90 ${
+                    currentPage == totalPages ? "hidden" : ""
+                  }`}
+                  onClick={() => setCurrentPage((prev) => prev + 1)}
+                >
+                  Next
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

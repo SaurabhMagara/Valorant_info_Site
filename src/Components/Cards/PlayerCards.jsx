@@ -53,7 +53,7 @@ const PlayerCards = () => {
       >
         <Nav />
         <div className=" flex  flex-col justify-center items-center my-5 h-full w-full">
-          <h1 className="text-red-500 text-3xl font-sans font-semibold md:text-5xl mb-4 shadow subpixel-antialiased">
+          <h1 className="text-red-500 text-4xl font-sans font-semibold md:text-5xl mb-4 shadow subpixel-antialiased">
             Player Cards
           </h1>
 

@@ -79,8 +79,7 @@ const Nav = () => {
           <MenuItem onClick={handleClose}><Link to='/agents'>Agents</Link></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/weapons'>Weapons</Link></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/maps'>Maps</Link></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Currencies</a></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>GameModes</a></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/gamemodes'>GameModes</Link></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/cards'>Cards</Link></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/buddies'>Buddies</Link></MenuItem>
         </Menu>
@@ -96,7 +95,7 @@ import { useNavigate } from "react-router-dom";
 function LongMenu() {
   const navigate = useNavigate();
 
-  const options = ["Cards" ,"Buddies", "GameModes", "Currencies"];
+  const options = ["Cards" ,"Buddies", "GameModes"];
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);

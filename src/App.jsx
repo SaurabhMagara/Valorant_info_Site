@@ -5,6 +5,7 @@ import Weapons from "./Components/Weapons/Weapons.jsx";
 import Maps from "./Components/Maps/Maps.jsx";
 import PlayerCards from "./Components/Cards/PlayerCards.jsx";
 import Buddies from "./Components/buddies/Buddies.jsx";
+import GameModes from "./Components/GameModes/GameModes.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route exact path="/maps" element={<Maps />} />
       <Route exact path="/cards" element={<PlayerCards />} />
       <Route exact path="/buddies" element={<Buddies />} />
+      <Route exact path="/gamemodes" element={<GameModes />} />
     </Routes>
   )
 }
