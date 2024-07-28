@@ -82,7 +82,7 @@ const Nav = () => {
           <MenuItem onClick={handleClose}><a href='#Currencies'>Currencies</a></MenuItem>
           <MenuItem onClick={handleClose}><a href='#Currencies'>GameModes</a></MenuItem>
           <MenuItem onClick={handleClose}><Link to='/cards'>Cards</Link></MenuItem>
-          <MenuItem onClick={handleClose}><a href='#Currencies'>Buddies</a></MenuItem>
+          <MenuItem onClick={handleClose}><Link to='/buddies'>Buddies</Link></MenuItem>
         </Menu>
       </div>
     );
