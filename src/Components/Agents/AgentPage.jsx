@@ -39,7 +39,7 @@ const AgentPage = () => {
             className=" hover:brightness-110 hover:scale-105 duration-500 ease-in-out "
           />
         </div>
-        <div className="flex flex-col w-10/ md:w-9/12 md:px-3 py-3">
+        <div className="flex flex-col w-10/12 md:w-9/12 md:px-3 py-3 ">
           <h1 className=" text-xl md:text-2xl text-red-500 font-bold">
             Name : {data?.displayName}
           </h1>
