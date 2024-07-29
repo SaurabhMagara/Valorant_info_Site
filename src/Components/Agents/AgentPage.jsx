@@ -32,7 +32,7 @@ const AgentPage = () => {
             <div className=" border-b-2 border-red-500 w-full mt-2"></div>
           </div>
         </div>
-        <div className=" flex flex-wrap flex-col p-2 justify-center items-center bg-gray-700 rounded-xl shadow-md w-11/12 md:w-8/12 ">
+        <div className=" flex flex-wrap flex-col p-2 justify-center items-center bg-gray-700 rounded-xl shadow-md w-11/12 md:w-8/12 md:h-2/3 ">
           <img
             src={data?.fullPortrait}
             alt={data?.displayName}

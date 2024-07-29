@@ -157,7 +157,7 @@ const PlayerCard = ({ name, img, i }) => {
   return (
     <>
       <div className="text-white bg-slate-800  py-2 px-3 rounded-md flex flex-col gap-2 justify-center items-center flex-wrap hover:bg-gray-900 hover:border hover:cursor-pointer shadow-md mb-2  transition-all duration-500">
-        <div className="flex justify-center items-center overflow-hidden rounded  ">
+        <div className=" h-96 flex justify-center items-center overflow-hidden rounded w-[239px]">
           <img
             src={img}
             alt={name}
