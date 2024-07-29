@@ -6,8 +6,11 @@ import Maps from "./Components/Maps/Maps.jsx";
 import PlayerCards from "./Components/Cards/PlayerCards.jsx";
 import Buddies from "./Components/buddies/Buddies.jsx";
 import GameModes from "./Components/GameModes/GameModes.jsx";
+import AgentPage from "./Components/Agents/AgentPage.jsx";
+import { useAgentContext } from "./context/AgentContext.jsx";
 
 const App = () => {
+  const {uuid} = useAgentContext();
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -17,6 +20,7 @@ const App = () => {
       <Route exact path="/cards" element={<PlayerCards />} />
       <Route exact path="/buddies" element={<Buddies />} />
       <Route exact path="/gamemodes" element={<GameModes />} />
+      <Route exact path={`/agent`} element={<AgentPage />} />
     </Routes>
   )
 }

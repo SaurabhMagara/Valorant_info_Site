@@ -1,7 +1,9 @@
 import { SearchRounded } from '@mui/icons-material';
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 import Nav from '../Nav';
+import { Link } from 'react-router-dom';
+import { useAgentContext } from '../../context/AgentContext';
 
 const Agents = () => {
 
@@ -106,8 +108,8 @@ const Agents = () => {
             <div className='flex justify-evenly items-center gap-2 flex-wrap'>
               {agents.length > 0 ?
                 agents.map((val) => {
-                  return <AgentsCards key={val.uuid} name={val.displayName} description={val.description} role={val.role.displayName} img={val.fullPortrait
-                  } />
+                  return <AgentsCards key={val.uuid} name={val.displayName} description={val.description} role={val.role.displayName} img={val.fullPortrait} uuid={val?.uuid}
+                 />
                 })
                 :
                 <div className='text-white text-3xl p-10 rounded'>
@@ -123,7 +125,9 @@ const Agents = () => {
 
 export default Agents;
 
-const AgentsCards = ({ name, role, description, img }) => {
+const AgentsCards = ({ name, role, description, img, uuid }) => {
+  const {setUuid} = useAgentContext();
+
   return (
     <>
       <div className='text-white p-2 rounded-lg flex flex-col gap-2 justify-center items-center flex-wrap h-auto hover:bg-gray-900 bg-slate-800 hover:border hover:cursor-pointer shadow-md mb-2 hover:translate-y-2 transition-all duration-500' >
@@ -134,6 +138,8 @@ const AgentsCards = ({ name, role, description, img }) => {
           <h2 className='text-slate-950 px-3 font-bold text-lg subpixel-antialiased bg-slate-400 rounded-lg '>Name : {name}</h2>
           <h3 className='text-black px-3 font-semibold bg-slate-500 subpixel-antialiased rounded-lg my-2 '><span className='font-bold'>Role : </span>{role}</h3>
           <p className='text-justify  text-black px-3 bg-slate-500 rounded-lg font-semibold py-1'><span className=' font-bold subpixel-antialiased'>Description : </span>{description} </p>
+          <Link className='px-3 font-semibold py-1 subpixel-antialiased hover:text-red-600 w-full text-lg ' to={`/agent`}><span onClick={()=>setUuid(uuid)}>Learn More</span></Link>
+          
         </div>
       </div>
     </>

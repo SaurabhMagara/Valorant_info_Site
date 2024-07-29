@@ -161,11 +161,11 @@ const PlayerCard = ({ name, img, i }) => {
           <img
             src={img}
             alt={name}
-            className="h-auto rounded hover:scale-110 duration-500 hover:brightness-110 w-[268px]  "
+            className="h-96 rounded hover:scale-110 duration-500 hover:brightness-110 w-[239px]  "
           />
         </div>
-        <div className="flex flex-col justify-start w-[268px]">
-          <h2 className="text-slate-950 subpixel-antialiased px-3 font-semibold  bg-slate-400 rounded-lg ">
+        <div className="flex flex-col justify-start w-[239px]">
+          <h2 className="text-slate-950 subpixel-antialiased px-3 font-semibold py-2 bg-slate-400 rounded-lg ">
             Name : {name}
           </h2>
         </div>

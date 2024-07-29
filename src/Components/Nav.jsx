@@ -18,7 +18,7 @@ const Nav = () => {
           <Link to='/'>
           <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Home</li>
           </Link>
-          <Link to='/Agents'>
+          <Link to='/agents'>
             <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Agents</li>
             </Link>
             <Link to='/weapons'>
