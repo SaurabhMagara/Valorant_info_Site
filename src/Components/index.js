@@ -7,5 +7,4 @@ import Buddies from "./Buddies/Buddies.jsx";
 import GameModes from "./GameModes/GameModes.jsx";
 import Home from "./Home/Home.jsx";
 
-
 export {PlayerCards, AgentPage, Agents, Maps, GameModes, Buddies, Weapons, Home};
