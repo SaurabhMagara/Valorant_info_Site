@@ -5,7 +5,7 @@ import AgentPage from "./Components/Agents/AgentPage.jsx";
 import Weapons from "./Components/Weapons/Weapons.jsx";
 import GameModes from "./Components/GameModes/GameModes.jsx";
 import Maps from "./Components/Maps/Maps.jsx" ;
-import Buddies from "./Components/Buddies/Buddies.jsx";
+import Buddies from "./Components/buddies/Buddies.jsx";
 import Home from "./Components/Home/Home.jsx";
 import { useAgentContext } from "./Components/Context/AgentContext.jsx";
 
