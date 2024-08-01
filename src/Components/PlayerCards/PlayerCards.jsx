@@ -49,10 +49,10 @@ const PlayerCards = () => {
     <>
       <div
         className="flex flex-col justify-center items-center bg-gray-900 w-full h-full scroll-smooth"
-        ref={topRef}
+        
       >
         <Nav />
-        <div className=" flex  flex-col justify-center items-center my-5 h-full w-full">
+        <div className=" flex  flex-col justify-center items-center my-5 h-full w-full" ref={topRef}>
           <h1 className="text-red-500 text-4xl font-sans font-semibold md:text-5xl mb-4 shadow subpixel-antialiased">
             Player Cards
           </h1>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useAgentContext } from "../../context/AgentContext";
+import { useAgentContext } from "../../Context/AgentContext";
 import { useCallback, useEffect, useState } from "react";
 import Nav from "../Nav";
 
@@ -10,8 +10,6 @@ const AgentPage = () => {
   const fetchData = useCallback(async () => {
     const url = `https://valorant-api.com/v1/agents/${uuid}`;
     const res = await axios.get(url);
-    console.log(res.data.data);
-
     const agent = res.data?.data;
     setData(agent);
   }, []);

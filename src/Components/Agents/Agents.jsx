@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 import Nav from '../Nav';
 import { Link } from 'react-router-dom';
-import { useAgentContext } from '../../context/AgentContext';
+import { useAgentContext } from '../../Context/AgentContext';
 
 const Agents = () => {
 
