@@ -1,5 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import {PlayerCards, AgentPage, Agents, Maps, GameModes, Buddies, Weapons, Home} from "./Components/index.js"
+import PlayerCards from "./Components/PlayerCards/PlayerCards.jsx";
+import Agents from "./Components/Agents/Agents.jsx";
+import AgentPage from "./Components/Agents/AgentPage.jsx";
+import Weapons from "./Components/Weapons/Weapons.jsx";
+import GameModes from "./Components/GameModes/GameModes.jsx";
+import Maps from "./Components/Maps/Maps.jsx" ;
+import Buddies from "./Components/Buddies/Buddies.jsx";
+import Home from "./Components/Home/Home.jsx";
 import { useAgentContext } from "./Components/Context/AgentContext.jsx";
 
 const App = () => {
