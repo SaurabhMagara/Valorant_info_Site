@@ -1,9 +1,9 @@
 import { SearchRounded } from '@mui/icons-material';
 import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
-import Nav from '../Nav';
+import Nav from '../Navbar/Nav.jsx';
 import { Link } from 'react-router-dom';
-import { useAgentContext } from '../../context/AgentContext';
+import { useAgentContext } from '../Context/AgentContext.jsx';
 
 const Agents = () => {
 

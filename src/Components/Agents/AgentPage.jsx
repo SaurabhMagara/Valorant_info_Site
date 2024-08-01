@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useAgentContext } from "../../context/AgentContext";
+import { useAgentContext } from "../Context/AgentContext";
 import { useCallback, useEffect, useState } from "react";
-import Nav from "../Nav";
+import Nav from "../Navbar/Nav";
 
 const AgentPage = () => {
   const { uuid } = useAgentContext();

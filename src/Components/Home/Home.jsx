@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import image from "../../assests/image.png";
 import { data } from "../../assests/data.js";
 import { useState } from "react";
-import Nav from "../Nav.jsx";
+import Nav from "../Navbar/Nav.jsx";
 
 const Home = () => {
 

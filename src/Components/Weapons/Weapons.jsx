@@ -1,5 +1,5 @@
 import axios from "axios";
-import Nav from "../Nav.jsx";
+import Nav from "../Navbar/Nav.jsx";
 import { useEffect, useState } from "react";
 
 const Weapons = () => {

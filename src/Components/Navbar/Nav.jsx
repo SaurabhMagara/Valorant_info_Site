@@ -1,39 +1,72 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MenuRounded, MoreHoriz } from "@mui/icons-material";
-import logo from "../assests/logo.png";
+import logo from "../../assests/logo.png";
 
 // Navbar code
 
 const Nav = () => {
     return (
-      <>
-        <nav className='md:px-3  flex justify-between items-center w-full bg-slate-800'>
-          <div>
-            <Link to='/'>
-            <img src={logo} alt="" className='md:h-16 md:w-16 h-10 w-10 pl-2 md:pl-0 cursor-pointer' />
-            </Link>
-            
-          </div>
-          <ul className='text-white subpixel-antialiased gap-5 hidden md:flex md:justify-center md:items-center'>
-          <Link to='/'>
-          <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Home</li>
-          </Link>
-          <Link to='/agents'>
-            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Agents</li>
-            </Link>
-            <Link to='/weapons'>
-            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Weapons</li>
-            </Link>
-            <Link to='/maps'>
-            <li className="cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center">Maps</li>
-            </Link>
-            <li className="cursor-pointer hover:bg-red-500 rounded-full flex justify-center items-center"><LongMenu/></li>
-          </ul>
-          <div className="md:hidden ">
-            <MenuS />
-          </div>
-        </nav>
-      </>
+<>
+      <nav className="md:px-3  flex justify-between items-center w-full bg-slate-800">
+        <div>
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt=""
+              className="md:h-16 md:w-16 h-10 w-10 pl-2 md:pl-0 cursor-pointer"
+            />
+          </NavLink>
+        </div>
+        <ul className="text-white subpixel-antialiased gap-5 hidden md:flex md:justify-center md:items-center">
+          <li>
+            <NavLink
+              to="/"
+              className={({isActive})=>
+                `cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center 
+                  ${isActive ? 'underline decoration-red-500 underline-offset-4' : ""}`}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/agents"
+              className={({isActive})=>
+                `cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center 
+                  ${isActive ? 'underline decoration-red-500 underline-offset-4' : ""}`}
+            >
+              Agents
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/weapons"
+              className={({isActive})=>
+                `cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center 
+                  ${isActive ? 'underline decoration-red-500 underline-offset-4' : ""}`}
+            >
+              Weapons
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/maps"
+              className={({isActive})=>
+                `cursor-pointer hover:underline hover:decoration-red-500 hover:underline-offset-4 flex justify-center items-center 
+                  ${isActive ? 'underline decoration-red-500 underline-offset-4' : ""}`}
+            >
+              Maps
+            </NavLink>
+          </li>
+          <li className="cursor-pointer hover:bg-red-500 rounded-full flex justify-center items-center">
+            <LongMenu />
+          </li>
+        </ul>
+        <div className="md:hidden ">
+          <MenuS />
+        </div>
+      </nav>
+    </>
     )
   }
 

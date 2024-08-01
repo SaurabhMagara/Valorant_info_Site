@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import Nav from "../Nav";
+import Nav from "../Navbar/Nav";
 import axios from "axios";
 
 const Buddies = () => {

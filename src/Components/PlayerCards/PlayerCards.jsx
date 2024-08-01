@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useRef, useCallback } from "react";
-import Nav from "../Nav";
+import Nav from "../Navbar/Nav";
 
 const PlayerCards = () => {
   const [data, setData] = useState([]); //sets response data came from api
