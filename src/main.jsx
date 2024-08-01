@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from "react-router-dom";
-import { PlayerCards, AgentPage, Agents, Maps, GameModes, Buddies, Weapons, Home } from "./Components/index.js";
-import { AgentContextProvider } from "./Context/AgentContext.jsx";
+import { PlayerCards, AgentPage, Agents, Maps, GameModes, Buddies, Weapons, Home, AgentContextProvider } from "./Components/index.js";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
