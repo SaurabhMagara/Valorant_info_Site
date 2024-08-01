@@ -1,30 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
 import "./index.css";
-
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from "react-router-dom";
-import { PlayerCards, AgentPage, Agents, Maps, GameModes, Buddies, Weapons, Home, AgentContextProvider } from "./Components/index.js";
-
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<Home />} />
-      <Route path="/agents" element={<Agents />} />
-      <Route path="/weapons" element={<Weapons />} />
-      <Route path="/maps" element={<Maps />} />
-      <Route path="/cards" element={<PlayerCards />} />
-      <Route path="/buddies" element={<Buddies />} />
-      <Route path="/gamemodes" element={<GameModes />} />
-      <Route path="/agent" element={<AgentPage />} />
-    </>
-  )
-);
+import { AgentContextProvider } from "./context/AgentContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AgentContextProvider>
-      <RouterProvider router={router} />
-    </AgentContextProvider>
+    <BrowserRouter>
+      <AgentContextProvider>
+        <App />
+      </AgentContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
