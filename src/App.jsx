@@ -7,10 +7,8 @@ import GameModes from "./Components/GameModes/GameModes.jsx";
 import Maps from "./Components/Maps/Maps.jsx" ;
 import Buddies from "./Components/buddies/Buddies.jsx";
 import Home from "./Components/Home/Home.jsx";
-import { useAgentContext } from "./Components/Context/AgentContext.jsx";
 
 const App = () => {
-  const {uuid} = useAgentContext();
   return (
     <Routes>
       <Route path="/" element={<Home />} />
